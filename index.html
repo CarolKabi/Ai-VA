@@ -1,13 +1,104 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Core Meta Tags -->
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/Logo.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AI Empowered Virtual Assistants</title>
+    <meta
+      name="description"
+      content="AI Empowered Virtual Assistants provides AI-enhanced administrative support, project management, and strategic business solutions for founders, entrepreneurs, and growing businesses."
+    />
+    <meta name="keywords" content="virtual assistants, AI-powered support, administrative services, project management, business solutions, AI Empowered VAs" />
+    <meta name="author" content="AI Empowered Virtual Assistants" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.empoweredaiva.com" />
+
+    <!-- Favicon and Icons -->
+    <link rel="icon" type="image/svg+xml" href="/Logo.svg" />
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Open Graph Tags (for social media sharing) -->
+    <meta property="og:title" content="AI Empowered Virtual Assistants" />
+    <meta
+      property="og:description"
+      content="Discover AI-enhanced virtual assistant services to streamline your business operations, from administrative support to strategic solutions."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.empoweredaiva.com" />
+    <meta property="og:image" content="https://www.empoweredaiva.com/og-image.jpg" />
+    <meta property="og:image:alt" content="AI Empowered Virtual Assistants Logo" />
+    <meta property="og:site_name" content="AI Empowered Virtual Assistants" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="AI Empowered Virtual Assistants" />
+    <meta
+      name="twitter:description"
+      content="Discover AI-enhanced virtual assistant services to streamline your business operations, from administrative support to strategic solutions."
+    />
+    <meta name="twitter:image" content="https://www.empoweredaiva.com/og-image.jpg" />
+    <meta name="twitter:image:alt" content="AI Empowered Virtual Assistants Logo" />
+    <meta name="twitter:site" content="@AIEmpoweredVAs" />
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "AI Empowered Virtual Assistants",
+        "url": "https://www.empoweredaiva.com",
+        "logo": "https://www.empoweredaiva.com/Logo.svg",
+        "sameAs": [
+          "https://twitter.com/AIEmpoweredVAs",
+          "https://www.linkedin.com/company/ai-empowered-vas"
+        ],
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "email": "info@empoweredaiva.com",
+          "contactType": "Customer Support",
+          "url": "https://www.empoweredaiva.com/contact-us"
+        },
+        "description": "AI Empowered Virtual Assistants provides AI-enhanced administrative support, project management, and strategic business solutions for founders, entrepreneurs, and growing businesses."
+      }
+    </script>
+
+    <!-- Preload Fonts and Critical Assets -->
+    <link
+      rel="preload"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <link rel="preload" href="/Logo.svg" as="image" />
+    <link rel="dns-prefetch" href="https://www.empoweredaiva.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Performance and Security -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://www.empoweredaiva.com; connect-src 'self' https://zcal.co;" />
+    <meta name="format-detection" content="telephone=no" />
+
+    <!-- CSS (Tailwind via CDN or bundled in production) -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+
+    <!-- Google Analytics (optional, add if used) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
   </body>
 </html>
