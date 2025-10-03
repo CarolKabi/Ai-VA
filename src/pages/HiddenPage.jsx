@@ -192,7 +192,7 @@ const HiddenPage = () => {
             className="text-sm text-gray-500"
             variants={itemVariants}
           >
-            Presented by: <span className="font-semibold text-gray-700">Your Name</span>, Growth Operations Strategist
+            Presented by: <span className="font-semibold text-gray-700">Caroline Kabi</span>, Growth Operations Strategist
           </motion.p>
         </motion.div>
       </motion.div>
