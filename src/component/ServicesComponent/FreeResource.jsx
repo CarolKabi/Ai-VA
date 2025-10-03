@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import { FaFilePdf, FaTimes } from 'react-icons/fa';
-import { assets } from '../../assets/assets';
+import { FaCheckCircle, FaCalendarAlt } from 'react-icons/fa';
+import Navbar from '../Navbar';
+import Footer from '../Footer';
 
+// Animation variants
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
@@ -30,264 +32,170 @@ const itemVariants = {
   },
   hover: {
     scale: 1.05,
-    boxShadow: '0 8px 16px rgba(200, 40, 126, 0.3)', // #C8287E shadow
+    boxShadow: '0 4px 12px rgba(200, 40, 126, 0.3)', // Inspired by WhyChooseUs
     transition: { duration: 0.2 },
   },
 };
 
-const FreeResource = () => {
-  const [isPopupOpen, setIsPopupOpen] = useState(false);
-  const [selectedResource, setSelectedResource] = useState(null);
-  const [email, setEmail] = useState('');
-  const [emailError, setEmailError] = useState('');
-  const [formStatus, setFormStatus] = useState(null);
-
-  // Sample PDF resources (replace with actual data)
-  const resources = [
+const ScalablePipelineAudit = () => {
+  const benefits = [
     {
-      id: 1,
-      title: 'The Founder’s Guide to Delegation in the AI Era',
-      previewImage: assets.heroabout,
-      pdfUrl: assets.pdf1,
+      icon: <FaCheckCircle className="text-2xl" style={{ color: '#8E24AA' }} />,
+      title: 'The Time Leak',
+      description: 'Pinpointing the exact administrative workflows costing you 10+ hours every week (Step 1).',
+    },
+    {
+      icon: <FaCheckCircle className="text-2xl" style={{ color: '#8E24AA' }} />,
+      title: 'The Growth Bottleneck',
+      description: 'Identifying the missing core system that prevents you from handling $600K in new business (Step 2).',
+    },
+    {
+      icon: <FaCheckCircle className="text-2xl" style={{ color: '#8E24AA' }} />,
+      title: 'Your Next Steps',
+      description: 'A clear, 3-point action plan to launch your Authority & Pipeline Engine (Step 3).',
     },
   ];
 
-  const handleDownloadClick = (resource) => {
-    setSelectedResource(resource);
-    setIsPopupOpen(true);
-    setFormStatus(null); // Reset form status when opening popup
-  };
-
-  const handlePopupSubmit = async (e) => {
-    e.preventDefault();
-    setFormStatus('Submitting...');
-
-    // Basic email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      setEmailError('Please enter a valid email address');
-      setFormStatus(null);
-      return;
-    }
-
-    // Prepare form data for Web3Forms
-    const formData = new FormData();
-    formData.append('access_key', '8a447905-95b4-4bf7-a86c-2590c58e253c');
-    formData.append('subject', `New Resource Download Request: ${selectedResource.title}`);
-    formData.append('from_name', 'AI Empowered VAs Visitor');
-    formData.append('email', email);
-    formData.append('resource', selectedResource.title);
-
-    try {
-      const response = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        body: formData,
-      });
-
-      const result = await response.json();
-
-      if (result.success) {
-        setFormStatus('Downloading...');
-
-        // Trigger download
-        const link = document.createElement('a');
-        link.href = selectedResource.pdfUrl;
-        link.download = selectedResource.title.toLowerCase().replace(/\s+/g, '-') + '.pdf';
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-
-        // Reset and close popup after a brief delay to show download state
-        setTimeout(() => {
-          setEmail('');
-          setEmailError('');
-          setIsPopupOpen(false);
-          setSelectedResource(null);
-          setFormStatus(null);
-        }, 1000); // 1-second delay for user to see "Downloading..."
-      } else {
-        console.error('Error:', result);
-        setFormStatus({
-          type: 'error',
-          message: result.message || 'Submission failed. Please try again later.',
-        });
-      }
-    } catch (error) {
-      console.error('Error submitting form:', error);
-      setFormStatus({
-        type: 'error',
-        message: 'Failed to connect to the server. Please check your network or contact us at info@empoweredaivas.com.',
-      });
-    }
-  };
-
-  const handlePopupClose = () => {
-    setIsPopupOpen(false);
-    setEmail('');
-    setEmailError('');
-    setSelectedResource(null);
-    setFormStatus(null);
-  };
-
   return (
-    <section
-      id="free-resources"
-      className="w-full max-w-[100vw] min-h-[80vh] h-fit py-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white to-[#C8287E]/5 relative overflow-hidden"
+    <div
+      className="min-h-screen flex flex-col bg-gradient-to-b from-white to-[#C8287E]/5"
+      style={{ fontFamily: "'Inter', sans-serif" }}
     >
-      <motion.div
-        className="max-w-6xl mx-auto"
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-      >
-        {/* Headline */}
-        <motion.h1
-          className="text-3xl sm:text-4xl  font-bold text-color mb-2 text-center leading-tight"
-          variants={itemVariants}
-        >
-          Free Resources
-          <span className="block w-48 h-1 mx-auto mt-4 bg-gradient-to-r from-[#C8287E] to-[#a62066] rounded-full"></span>
-        </motion.h1>
-
-        {/* Subheadline */}
-        <motion.p
-          className="text-sm sm:text-base  text-gray-600 mb-12 text-center leading-relaxed max-w-3xl mx-auto"
-          variants={itemVariants}
-        >
-          Unlock valuable insights with our free, downloadable PDFs. Enter your email to access these
-          expertly crafted resources designed to help you{' '}
-          <span className="font-semibold text-color">delegate, grow, and thrive</span>.
-        </motion.p>
-
-        {/* Resource Cards */}
+      <Navbar />
+      <section className="w-full max-w-[100vw] py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+        {/* Main Content Card */}
         <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"
+          className="max-w-6xl mx-auto bg-white rounded-lg shadow-lg p-8 md:p-12"
           variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          whileHover={{ scale: 1.02, boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1)' }}
         >
-          {resources.map((resource) => (
-            <motion.div
-              key={resource.id}
-              className="bg-white rounded-2xl shadow-lg p-4 w-full flex flex-col items-center relative"
+          {/* Header & Branding */}
+          <motion.div className="text-center mb-8" variants={containerVariants}>
+            <motion.h1
+              className="text-xs font-semibold uppercase tracking-widest"
+              style={{ color: '#C8287E' }}
               variants={itemVariants}
-              whileHover="hover"
             >
-              <div className="absolute top-4 right-4">
-                <FaFilePdf className="text-color text-xl" aria-hidden="true" />
-              </div>
-              <img
-                src={resource.previewImage}
-                alt={`Preview of ${resource.title} PDF`}
-                className="w-full h-48 object-cover rounded-lg mb-4"
-              />
-              <h3 className="text-base sm:text-lg font-bold text-color mb-2 text-center">
-                {resource.title}
-              </h3>
-              <motion.button
-                onClick={() => handleDownloadClick(resource)}
-                className="inline-flex items-center px-6 py-3 text-base font-semibold rounded-full bg-color text-white shadow-md hover:bg-[#a62066] transition-colors duration-300"
-                variants={itemVariants}
-                whileHover="hover"
-                whileTap={{ scale: 0.95 }}
-                aria-label={`Download ${resource.title} PDF`}
-              >
-                Download PDF
-              </motion.button>
-            </motion.div>
-          ))}
-        </motion.div>
-      </motion.div>
+              The Scalable Pipeline Blueprint
+            </motion.h1>
+            <motion.h2
+              className="mt-2 text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 leading-tight"
+              variants={itemVariants}
+            >
+              Stop Losing 10+ Hours/Week to <span className="italic text-[#C8287E]">Admin Chaos</span>
+              <span className="block w-32 h-1 mx-auto mt-3 bg-gradient-to-r from-[#C8287E] to-[#a62066] rounded-full"></span>
+            </motion.h2>
+          </motion.div>
 
-      {/* Popup Form */}
-      {isPopupOpen && (
-        <motion.div
-          className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-        >
-          <motion.div
-            className="bg-white rounded-2xl p-8 max-w-md w-full relative"
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ type: 'spring', stiffness: 200, damping: 20 }}
-          >
-            <button
-              onClick={handlePopupClose}
-              className="absolute top-4 right-4 text-gray-600 hover:text-[#C8287E]"
-              aria-label="Close popup"
+          {/* Value Proposition Section */}
+          <motion.div className="space-y-6 text-center" variants={containerVariants}>
+            <motion.p
+              className="text-sm sm:text-base text-gray-600 leading-relaxed max-w-3xl mx-auto"
+              variants={itemVariants}
             >
-              <FaTimes className="text-xl" aria-hidden="true" />
-            </button>
-            <h2 className="text-xl sm:text-2xl font-semibold text-color mb-4 text-center">
-              Get Your Free {selectedResource?.title}
-            </h2>
-            <p className="text-sm text-gray-600 mb-6 text-center">
-              Enter your email to download this resource instantly.
-            </p>
-            {formStatus && typeof formStatus === 'object' && (
-              <div
-                className={`mb-4 p-4 rounded-lg text-center ${
-                  formStatus.type === 'success'
-                    ? 'bg-green-100 text-green-800'
-                    : 'bg-red-100 text-red-800'
-                }`}
-              >
-                {formStatus.message}
-              </div>
-            )}
-            
-            <form onSubmit={handlePopupSubmit} className="space-y-4">
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-                  Email Address <span className="text-red-500">*</span>
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={email}
-                  onChange={(e) => {
-                    setEmail(e.target.value);
-                    setEmailError('');
-                  }}
-                  required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C8287E] text-gray-700 bg-gray-50"
-                  aria-label="Your email address for downloading the PDF"
-                />
-                {emailError && (
-                  <p className="text-sm text-red-500 mt-1">{emailError}</p>
-                )}
-              </div>
-              <motion.button
-                type="submit"
-                disabled={formStatus === 'Submitting...' || formStatus === 'Downloading...'}
-                className={`w-full inline-flex items-center justify-center px-6 py-3 text-base font-semibold rounded-full text-white shadow-md transition-colors duration-300 ${
-                  formStatus === 'Submitting...' || formStatus === 'Downloading...'
-                    ? 'bg-color cursor-not-allowed'
-                    : 'bg-color hover:bg-color'
-                }`}
+              You're a <span className="font-semibold text-[#C8287E]">B2B Service Provider</span>, not a Chief Administrative Officer. Your current processes are stealing time and capping your revenue potential.
+            </motion.p>
+
+            {/* Results Callout */}
+            <motion.div
+              className="bg-gradient-to-r from-[#C8287E]/10 to-white rounded-lg shadow-md p-6"
+              variants={itemVariants}
+              whileHover={{ backgroundColor: '#fdf2f8' }}
+            >
+              <h3 className="text-lg sm:text-xl font-semibold text-gray-800">
+                The Solution? Build an <span className="italic text-[#C8287E]">Automated Acquisition Engine</span>.
+              </h3>
+              <p className="text-xs sm:text-sm text-[#8E24AA] mt-2 font-semibold">
+                I help clients achieve results like <span className="font-bold">$600K+</span> in qualified sales pipeline.
+              </p>
+            </motion.div>
+          </motion.div>
+
+          <motion.hr className="my-10 border-gray-200" variants={itemVariants} />
+
+          {/* The Offer Section */}
+          <motion.div className="text-center" variants={containerVariants}>
+            <motion.h3
+              className="text-lg sm:text-xl font-semibold text-gray-900 mb-4"
+              variants={itemVariants}
+            >
+              Get Your <span className="text-[#C8287E]">FREE</span> Profit-First Audit
+              <span className="block w-24 h-1 mx-auto mt-3 bg-gradient-to-r from-[#C8287E] to-[#a62066] rounded-full"></span>
+            </motion.h3>
+            <motion.p
+              className="text-xs sm:text-sm text-gray-600 mb-8 max-w-3xl mx-auto"
+              variants={itemVariants}
+            >
+              In this 15-minute audit, we use The Scalable Pipeline Blueprint to identify:
+            </motion.p>
+
+            {/* Benefits Grid */}
+            <motion.div
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto mb-10"
+              variants={containerVariants}
+            >
+              {benefits.map((benefit, index) => (
+                <motion.div
+                  key={index}
+                  className="bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center"
+                  variants={itemVariants}
+                  whileHover="hover"
+                >
+                  <div className="mb-4">{benefit.icon}</div>
+                  <h4 className="text-sm font-semibold text-[#C8287E] mb-3">{benefit.title}</h4>
+                  <p className="text-xs text-gray-600 leading-relaxed">{benefit.description}</p>
+                </motion.div>
+              ))}
+            </motion.div>
+
+            {/* Call to Action */}
+            <motion.div className="flex flex-col items-center" variants={itemVariants}>
+              <motion.a
+                href="https://your-scheduling-link.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center px-5 py-3 text-sm font-semibold rounded-full bg-[#C8287E] text-white shadow-lg"
                 variants={itemVariants}
-                whileHover={formStatus ? {} : 'hover'}
-                whileTap={formStatus ? {} : { scale: 0.95 }}
-                animate={
-                  formStatus === 'Downloading...'
-                    ? {
-                        scale: [1, 1.05, 1],
-                        transition: { repeat: Infinity, duration: 0.8 },
-                      }
-                    : {}
-                }
-                aria-label="Submit email to download the PDF"
+                whileHover={{
+                  scale: 1.05,
+                  backgroundColor: '#a62066',
+                  boxShadow: '0 4px 12px rgba(200, 40, 126, 0.3)',
+                }}
+                whileTap={{ scale: 0.95 }}
+                aria-label="Book your free Scalable Pipeline Audit"
               >
-                {formStatus === 'Submitting...' ? 'Submitting...' : formStatus === 'Downloading...' ? 'Downloading...' : 'Download Now'}
-              </motion.button>
-            </form>
+                <FaCalendarAlt className="mr-2 text-sm" aria-hidden="true" />
+                Book Your FREE Audit Now
+              </motion.a>
+              <motion.p
+                className="mt-4 text-xs text-gray-500"
+                variants={itemVariants}
+              >
+                Only 5 spots available this week for the free audit.
+              </motion.p>
+            </motion.div>
+          </motion.div>
+
+          {/* Strategist Footer */}
+          <motion.div
+            className="mt-12 pt-6 border-t border-gray-100 text-center"
+            variants={containerVariants}
+          >
+            <motion.p
+              className="text-xs text-gray-500"
+              variants={itemVariants}
+            >
+              Presented by: <span className="font-semibold text-gray-700">Your Name</span>, Growth Operations Strategist
+            </motion.p>
           </motion.div>
         </motion.div>
-      )}
-    </section>
+      </section>
+      <Footer />
+    </div>
   );
 };
 
-export default FreeResource;
+export default ScalablePipelineAudit;

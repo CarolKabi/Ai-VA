@@ -8,6 +8,8 @@ import ContactUs from './pages/ContactUs';
 import Services from './pages/Services';
 import TermsOfService from './pages/TermsOfService';
 import PrivacyPolicy from './pages/PrivacyPolicy';
+import HiddenPage from './pages/HiddenPage';
+import ScalablePipelineAudit from './pages/ScalableAudit';
 
 const App = () => {
   const location = useLocation();
@@ -139,6 +141,48 @@ const App = () => {
         },
       },
     },
+    '/hidden-page':{
+      title: 'Hidden Page - AI Empowered Virtual Assistants',
+      description:
+        'This is a hidden page not indexed by search engines.',
+      keywords: 'hidden page, noindex',
+      structuredData: {
+        '@context': 'https://schema.org',
+        '@type': 'WebPage',
+        name: 'Hidden Page',
+        url: 'https://www.empoweredaiva.com/hidden-page',
+        description:
+
+          'This is a hidden page not indexed by search engines.',
+        publisher: {
+          '@type': 'Organization',
+          name: 'AI Empowered Virtual Assistants',
+          url: 'https://www.empoweredaiva.com',
+          logo: 'https://www.empoweredaiva.com/Logo.svg',
+        },
+      },
+      noIndex: true,
+
+    },
+    "hidden-page2": {
+      title: 'Hidden Page 2 - AI Empowered Virtual Assistants',
+      description: "This is another hidden page not indexed by search engines.",
+      keywords: 'hidden page 2, noindex',
+      structuredData: {
+        '@context': 'https://schema.org',
+        '@type': 'WebPage',
+        name: 'Hidden Page 2',
+        url: 'https://www.empoweredaiva.com/hidden-page-2',
+        description: 'This is another hidden page not indexed by search engines.',
+        publisher: {
+          '@type': 'Organization',
+          name: 'AI Empowered Virtual Assistants',
+          url: 'https://www.empoweredaiva.com',
+          logo: 'https://www.empoweredaiva.com/Logo.svg',
+        },
+      },
+      noIndex: true,
+    },  
     '/privacy-policy': {
       title: 'Privacy Policy - AI Empowered Virtual Assistants',
       description:
@@ -200,6 +244,8 @@ const App = () => {
         <Route path="/terms-and-conditions" element={<TermsOfService />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="*" element={<Home />} />
+        <Route path="/hidden-page" element={<HiddenPage />} />
+        <Route path="/hidden-page-2" element={<ScalablePipelineAudit />} />
       </Routes>
     </HelmetProvider>
   );
