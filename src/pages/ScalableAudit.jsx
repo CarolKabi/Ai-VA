@@ -41,8 +41,8 @@ const ScalablePipelineAudit = () => {
   const benefits = [
     {
       icon: <FaCheckCircle className="text-3xl" style={{ color: '#8E24AA' }} />,
-      title: 'The Time Leak',
-      description: 'Pinpoint the workflows costing you over $5,000/month in lost founder time (10+ hours wasted).',
+      title: 'The $10K Time Leak',
+      description: 'Pinpoint the workflows costing you over $5000/month in lost founder time (10+ hours wasted).',
     },
     {
       icon: <FaCheckCircle className="text-3xl" style={{ color: '#8E24AA' }} />,
@@ -77,17 +77,17 @@ const ScalablePipelineAudit = () => {
           {/* Header & Branding */}
           <motion.div className="text-center mb-10" variants={containerVariants}>
             <motion.h1
-              className="text-sm font-semibold uppercase tracking-widest"
+              className="text-sm font-semibold uppercase mb-3 tracking-widest"
               style={{ color: '#C8287E' }}
               variants={itemVariants}
             >
               The Scalable Pipeline Blueprint
             </motion.h1>
             <motion.h2
-              className="mt-3 text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 leading-tight"
+              className="my-4 text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 leading-tight"
               variants={itemVariants}
             >
-              Stop Losing 10+ Hours/Week to <span className="italic text-pink-600">Admin Chaos</span>
+              Stop Losing 10+ Hours/Week to Admin Chaos. <span className="italic text-pink-600">Build the Predictable Engine that Generates $600K+ Pipeline.</span>
               <span className="block w-24 h-1 mx-auto mt-4 bg-gradient-to-r from-pinkbg-pink-600 to-[#a62066] rounded-full"></span>
             </motion.h2>
              <motion.p
@@ -138,7 +138,7 @@ const ScalablePipelineAudit = () => {
           {/* The Offer Section */}
           <motion.div className="text-center" variants={containerVariants}>
             <motion.h3
-              className="text-lg sm:text-xl font-semibold text-gray-900 mb-6"
+              className="text-lg sm:text-xl font-bold text-gray-900 mb-6"
               variants={itemVariants}
             >
               Get Your <span className=" text-white p-2 rounded-md bg-pink-600">FREE</span> Profit-First Audit
@@ -193,8 +193,8 @@ const ScalablePipelineAudit = () => {
                 whileTap={{ scale: 0.95 }}
                 aria-label="Book your free Scalable Pipeline Audit with Caroline Kabi"
               >
-                <FaCalendarAlt className="mr-2 text-sm" aria-hidden="true" />
-                Secure Your FREE Scalable Pipeline Audit Now
+                <FaCalendarAlt className="mr-2 text-xs md:text-sm" aria-hidden="true" />
+                Secure Your FREE Audit & $600K Roadmap
               </motion.a>
               <p className="mt-4 text-xs text-gray-500">
                 <span className='font-bold text-red-500'>URGENT:</span> Only 3 spots available this week. Schedule your audit now before they're gone.
