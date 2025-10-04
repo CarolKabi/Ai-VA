@@ -42,17 +42,17 @@ const ScalablePipelineAudit = () => {
     {
       icon: <FaCheckCircle className="text-3xl" style={{ color: '#8E24AA' }} />,
       title: 'The Time Leak',
-      description: 'Pinpoint administrative workflows costing you 10+ hours weekly',
+      description: 'Pinpoint the workflows costing you over $5,000/month in lost founder time (10+ hours wasted).',
     },
     {
       icon: <FaCheckCircle className="text-3xl" style={{ color: '#8E24AA' }} />,
-      title: 'The Growth Bottleneck',
-      description: 'Identify the missing system blocking $600K in new business',
+      title: 'Your $600K Opportunity',
+      description: 'Identify the missing system needed to confidently handle $600K in new business without breaking your team.',
     },
     {
       icon: <FaCheckCircle className="text-3xl" style={{ color: '#8E24AA' }} />,
-      title: 'Your Next Steps',
-      description: 'Get a 3-point action plan to launch your Pipeline Engine ',
+      title: 'Immediate Action Plan',
+      description: 'Walk away with a clear, 3-point action plan to launch your Authority & Pipeline Engine.',
     },
   ];
 
@@ -87,20 +87,37 @@ const ScalablePipelineAudit = () => {
               className="mt-3 text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 leading-tight"
               variants={itemVariants}
             >
-              Stop Losing Time to <span className="italic text-pink-600">Admin Chaos</span>
+              Stop Losing 10+ Hours/Week to <span className="italic text-pink-600">Admin Chaos</span>
               <span className="block w-24 h-1 mx-auto mt-4 bg-gradient-to-r from-pinkbg-pink-600 to-[#a62066] rounded-full"></span>
             </motion.h2>
+             <motion.p
+              className="text-sm sm:text-base text-gray-600 leading-relaxed max-w-3xl mx-auto"
+              variants={itemVariants}
+            >
+              You're a <span className="font-semibold text-pink-600">B2B Service Provider</span>,You need a systematic growth strategy, not another contractor who just adds items to a checklist.
+            </motion.p>
+
+          </motion.div>
+
+          {/* Testimonial Section */}
+          <motion.div
+            className="bg-gradient-to-br from-white to-purple-200 rounded-md shadow-md p-6 md:p-8 mb-8 border-l-1 border-pink-600"
+            variants={itemVariants}
+            whileHover={{ scale: 1.02 }}
+          >
+            <div className="text-center">
+              <blockquote className="text-xs sm:text-sm italic text-gray-700 leading-relaxed mb-4">
+                "Working with the team has been an absolute game changer. They stepped in with professionalism and initiative—they didn't just follow instructions, they helped me build and implement an entire <span className="font-bold text-pink-600">customer acquisition engine</span> that is now the backbone of our growth. My operations are smoother, and I have the confidence to scale."
+              </blockquote>
+              <cite className="text-xs font-semibold text-gray-600 not-italic">
+                — Tekiah Tunstall, Founder & CEO, Preferred Solutions Transport
+              </cite>
+            </div>
           </motion.div>
 
           {/* Value Proposition Section */}
           <motion.div className="space-y-8 text-center" variants={containerVariants}>
-            <motion.p
-              className="text-sm sm:text-base text-gray-600 leading-relaxed max-w-3xl mx-auto"
-              variants={itemVariants}
-            >
-              As a <span className="font-semibold text-pinkbg-pink-600">B2B Service Provider</span>, your time should fuel growth, not admin tasks. Current processes are silently capping your revenue potential.
-            </motion.p>
-
+      
             {/* Results Callout */}
             <motion.div
               className="bg-gradient-to-br from-white to-pink-300 rounded-xl shadow-md p-8"
@@ -108,10 +125,10 @@ const ScalablePipelineAudit = () => {
               whileHover={{ backgroundColor: '#fdf2f8', scale: 1.02 }}
             >
               <h3 className="text-lg sm:text-xl font-semibold text-gray-900">
-                The Solution: An <span className="italic text-pinkbg-pink-600">Automated Acquisition Engine</span>
+                The Solution is <span className="italic text-pink-600">The Scalable Pipeline Blueprint.</span>
               </h3>
               <p className="text-sm text-[#8E24AA] mt-3 font-medium">
-                My proven system drives results like <span className="font-bold">$600K+</span> in qualified sales pipeline.
+                We turn administrative time wasting into a <span className="font-bold">predictable, automated acquisition engine.</span>
               </p>
             </motion.div>
           </motion.div>
@@ -124,14 +141,14 @@ const ScalablePipelineAudit = () => {
               className="text-lg sm:text-xl font-semibold text-gray-900 mb-6"
               variants={itemVariants}
             >
-              Your <span className=" text-white p-2 rounded-md bg-pink-600">FREE</span> Profit-First Audit
+              Get Your <span className=" text-white p-2 rounded-md bg-pink-600">FREE</span> Profit-First Audit
               <span className="block w-20 h-1 mx-auto mt-3 bg-gradient-to-r from-pinkbg-pink-600 to-[#a62066] rounded-full"></span>
             </motion.h3>
             <motion.p
               className="text-sm text-gray-600 mb-10 max-w-3xl mx-auto"
               variants={itemVariants}
             >
-              In just 15 minutes, we’ll use The Scalable Pipeline Blueprint to uncover:
+              In this focused, 15-minute audit, we use your data to find your biggest revenue leaks and give you a roadmap.
             </motion.p>
 
             {/* Benefits Grid */}
@@ -177,10 +194,10 @@ const ScalablePipelineAudit = () => {
                 aria-label="Book your free Scalable Pipeline Audit with Caroline Kabi"
               >
                 <FaCalendarAlt className="mr-2 text-sm" aria-hidden="true" />
-                Book Your FREE Audit Now
+                Secure Your FREE Scalable Pipeline Audit Now
               </motion.a>
               <p className="mt-4 text-xs text-gray-500">
-                Only 5 spots available this week for the free audit.
+                <span className='font-bold text-red-500'>URGENT:</span> Only 3 spots available this week. Schedule your audit now before they're gone.
               </p>
             </motion.div>
           </motion.div>
