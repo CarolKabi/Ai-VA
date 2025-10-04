@@ -102,7 +102,7 @@ const ContactUs = () => {
         message: 'Failed to connect to the server. Please check your network or contact us at info@empoweredaivas.com.',
       });
     } finally {
-      settimeout(()=>{
+      setTimeout(()=>{
         setFormStatus(null);
         setLoading(false);
       }, 3000); // Reset form status after 3 seconds
