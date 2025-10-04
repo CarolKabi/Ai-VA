@@ -164,16 +164,18 @@ const App = () => {
       noIndex: true,
 
     },
-    "hidden-page2": {
-      title: 'Hidden Page 2 - AI Empowered Virtual Assistants',
-      description: "This is another hidden page not indexed by search engines.",
-      keywords: 'hidden page 2, noindex',
+    "/scalable-blueprint-pipeline": {
+      title: 'Free Scalable Pipeline Audit - AI Empowered Virtual Assistants',
+      description:
+        'Book your free 15-minute Scalable Pipeline Audit to identify time leaks, growth bottlenecks, and next steps to scale your business.',
+      keywords: 'scalable pipeline audit, free business audit, growth strategy, time management',
       structuredData: {
         '@context': 'https://schema.org',
         '@type': 'WebPage',
-        name: 'Hidden Page 2',
-        url: 'https://www.empoweredaiva.com/hidden-page-2',
-        description: 'This is another hidden page not indexed by search engines.',
+        name: 'Free Scalable Pipeline Audit',
+        url: 'https://www.empoweredaiva.com/scalable-blueprint-pipeline',
+        description:
+          'Book your free 15-minute Scalable Pipeline Audit to identify time leaks, growth bottlenecks, and next steps to scale your business.',
         publisher: {
           '@type': 'Organization',
           name: 'AI Empowered Virtual Assistants',
@@ -181,8 +183,7 @@ const App = () => {
           logo: 'https://www.empoweredaiva.com/Logo.svg',
         },
       },
-      noIndex: true,
-    },  
+    },
     '/privacy-policy': {
       title: 'Privacy Policy - AI Empowered Virtual Assistants',
       description:
