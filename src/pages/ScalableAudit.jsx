@@ -42,17 +42,17 @@ const ScalablePipelineAudit = () => {
     {
       icon: <FaCheckCircle className="text-3xl" style={{ color: '#8E24AA' }} />,
       title: 'The Time Leak',
-      description: 'Pinpoint administrative workflows costing you 10+ hours weekly (Step 1).',
+      description: 'Pinpoint administrative workflows costing you 10+ hours weekly',
     },
     {
       icon: <FaCheckCircle className="text-3xl" style={{ color: '#8E24AA' }} />,
       title: 'The Growth Bottleneck',
-      description: 'Identify the missing system blocking $600K in new business (Step 2).',
+      description: 'Identify the missing system blocking $600K in new business',
     },
     {
       icon: <FaCheckCircle className="text-3xl" style={{ color: '#8E24AA' }} />,
       title: 'Your Next Steps',
-      description: 'Get a 3-point action plan to launch your Pipeline Engine (Step 3).',
+      description: 'Get a 3-point action plan to launch your Pipeline Engine ',
     },
   ];
 
@@ -87,7 +87,7 @@ const ScalablePipelineAudit = () => {
               className="mt-3 text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 leading-tight"
               variants={itemVariants}
             >
-              Stop Losing Time to <span className="italic text-pinkbg-pink-600">Admin Chaos</span>
+              Stop Losing Time to <span className="italic text-pink-600">Admin Chaos</span>
               <span className="block w-24 h-1 mx-auto mt-4 bg-gradient-to-r from-pinkbg-pink-600 to-[#a62066] rounded-full"></span>
             </motion.h2>
           </motion.div>
@@ -163,7 +163,7 @@ const ScalablePipelineAudit = () => {
                 Ready to <span className="text-pinkbg-pink-600">Unlock Your Growth</span>?
               </h4>
               <motion.a
-                href="https://your-scheduling-link.com"
+                href="https://zcal.co/carolinekabi/discovery-call-30min"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center px-6 py-3 text-sm font-semibold rounded-full bg-pink-600 text-white shadow-lg"

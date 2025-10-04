@@ -244,8 +244,7 @@ const App = () => {
         <Route path="/terms-and-conditions" element={<TermsOfService />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="*" element={<Home />} />
-        <Route path="/hidden-page" element={<HiddenPage />} />
-        <Route path="/hidden-page-2" element={<ScalablePipelineAudit />} />
+        <Route path="/scalable-blueprint-pipeline" element={<ScalablePipelineAudit />} />
       </Routes>
     </HelmetProvider>
   );
