@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import emailjs from '@emailjs/browser'; // npm install @emailjs/browser
 import { FaFilePdf, FaTimes } from 'react-icons/fa';
 import { assets } from '../../assets/assets';
 
@@ -42,11 +41,10 @@ const FreeResource = () => {
   const [email, setEmail] = useState('');
   const [emailError, setEmailError] = useState('');
   const [formStatus, setFormStatus] = useState(null);
+  const [loading, setLoading] = useState(false);
 
-  // EmailJS Configuration (Replace with your actual values)
-  const EMAILJS_SERVICE_ID = 'service_087cowb'; // From EmailJS dashboard
-  const EMAILJS_TEMPLATE_ID = 'template_uzv29ap'; // From EmailJS templates
-  const EMAILJS_PUBLIC_KEY = 'eM__3zwSLlZ1O-FZM'; // From EmailJS account settings
+  // Web3Forms Configuration
+  const WEB3FORMS_ACCESS_KEY = '0fd96400-8a88-4fb1-b159-31f31367ac50'; // From Web3Forms dashboard
 
   // Sample PDF resources (replace with actual data)
   const resources = [
@@ -58,11 +56,6 @@ const FreeResource = () => {
     },
   ];
 
-  // Initialize EmailJS (do this once, e.g., in useEffect or here)
-  React.useEffect(() => {
-    emailjs.init(EMAILJS_PUBLIC_KEY);
-  }, []);
-
   const handleDownloadClick = (resource) => {
     setSelectedResource(resource);
     setIsPopupOpen(true);
@@ -71,51 +64,73 @@ const FreeResource = () => {
 
   const handlePopupSubmit = async (e) => {
     e.preventDefault();
-    setFormStatus('Processing...');
+    setLoading(true);
+    setFormStatus('Sending....');
 
     // Basic email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
       setEmailError('Please enter a valid email address');
       setFormStatus(null);
+      setLoading(false);
       return;
     }
 
-    // Prepare parameters for EmailJS template
-    const templateParams = {
-      to_email: email,
-      resource_title: selectedResource.title,
-      // Add more params as needed for your template (e.g., from_name, message)
-    };
+    // Prepare form data for Web3Forms
+    const formData = new FormData();
+    formData.append('access_key','8a447905-95b4-4bf7-a86c-2590c58e253c');
+    formData.append('subject', `New Free Resource Download: ${selectedResource.title}`);
+    formData.append('from_name', 'Free Resource Download');
+    formData.append('email', email);
+    formData.append('resource_title', selectedResource.title);
 
     try {
-      // Send email via EmailJS
-      await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams);
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData,
+      });
 
-      setFormStatus('Downloading...');
+      const result = await response.json();
 
-      // Trigger download
-      const link = document.createElement('a');
-      link.href = selectedResource.pdfUrl;
-      link.download = selectedResource.title.toLowerCase().replace(/\s+/g, '-') + '.pdf';
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
+      if (result.success) {
+        setLoading(false);
+        setFormStatus('Downloading...');
 
-      // Reset and close popup after a brief delay to show download state
-      setTimeout(() => {
-        setEmail('');
-        setEmailError('');
-        setIsPopupOpen(false);
-        setSelectedResource(null);
-        setFormStatus(null);
-      }, 1000); // 1-second delay for user to see "Downloading..."
+        // Trigger download
+        const link = document.createElement('a');
+        link.href = selectedResource.pdfUrl;
+        link.download = selectedResource.title.toLowerCase().replace(/\s+/g, '-') + '.pdf';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+
+        // Reset and close popup after a brief delay to show download state
+        setTimeout(() => {
+          setEmail('');
+          setEmailError('');
+          setIsPopupOpen(false);
+          setSelectedResource(null);
+          setFormStatus(null);
+        }, 1000); // 1-second delay for user to see "Downloading..."
+      } else {
+        setLoading(false);
+        console.error('Error:', result);
+        setFormStatus({
+          type: 'error',
+          message: result.message || 'Submission failed. Please try again later.',
+        });
+      }
     } catch (error) {
-      console.error('EmailJS send error:', error);
+      console.error('Error submitting form:', error);
+      setLoading(false);
       setFormStatus({
         type: 'error',
-        message: 'Failed to send confirmation. Please try again or contact us at caroline@empoweredaiva.com.',
+        message: 'Failed to connect to the server. Please check your network or contact us at info@empoweredaivas.com.',
       });
+    } finally {
+      setTimeout(() => {
+        setFormStatus(null);
+      }, 3000); // Reset form status after 3 seconds if still showing
     }
   };
 
@@ -125,6 +140,7 @@ const FreeResource = () => {
     setEmailError('');
     setSelectedResource(null);
     setFormStatus(null);
+    setLoading(false);
   };
 
   return (
@@ -226,7 +242,7 @@ const FreeResource = () => {
             {formStatus && (
               <div
                 className={`mb-4 p-4 rounded-lg text-center ${
-                  formStatus === 'Downloading...' || formStatus === 'Processing...'
+                  formStatus === 'Downloading...' || formStatus === 'Sending....'
                     ? 'bg-blue-100 text-blue-800'
                     : formStatus.type === 'error'
                     ? 'bg-red-100 text-red-800'
@@ -261,18 +277,18 @@ const FreeResource = () => {
               </div>
               <motion.button
                 type="submit"
-                disabled={formStatus === 'Processing...' || formStatus === 'Downloading...'}
+                disabled={loading}
                 className={`w-full inline-flex items-center justify-center px-6 py-3 text-base font-semibold rounded-full text-white shadow-md transition-colors duration-300 ${
-                  formStatus === 'Processing...' || formStatus === 'Downloading...'
+                  loading
                     ? 'bg-gray-400 cursor-not-allowed'
                     : 'bg-color hover:bg-[#a62066]'
                 }`}
                 variants={itemVariants}
-                whileHover={formStatus ? {} : 'hover'}
-                whileTap={formStatus ? {} : { scale: 0.95 }}
+                whileHover={loading ? {} : 'hover'}
+                whileTap={loading ? {} : { scale: 0.95 }}
                 aria-label="Submit email to download the PDF"
               >
-                {formStatus === 'Processing...' ? 'Processing...' : formStatus === 'Downloading...' ? 'Downloading...' : 'Download Now'}
+                {loading ? 'Processing...' : 'Download Now'}
               </motion.button>
             </form>
           </motion.div>
