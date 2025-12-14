@@ -69,11 +69,11 @@ const CastlePlan = () => {
           <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-color mb-2">
             The Castle – Custom Quote
           </h2>
-          <p className="text-xs sm:text-sm text-gray-600 mb-6 leading-relaxed">
+          <p className="text-xs sm:text-sm  text-gray-600 mb-6 leading-relaxed">
             For multi-brand founders, teams, and VIPs who need{' '}
             <span className="font-semibold text-color">layered support</span>.
           </p>
-          <ul className="text-xs text-gray-600 mb-6">
+          <ul className="text-xs  text-gray-600 mb-6">
             {castleFeatures.map((feature, idx) => (
               <li key={idx} className="flex items-start mb-2">
                 <FaCheckCircle className="text-color mr-2 mt-1 text-sm" aria-hidden="true" />
@@ -81,6 +81,9 @@ const CastlePlan = () => {
               </li>
             ))}
           </ul>
+          <p className='text-xs italic text-gray-600 my-3'>
+            Best for those need AI support, cross functional team support, and to do more with less.
+          </p>
           <Link
             to="https://zcal.co/carolinekabi/discovery-call-30min"
             target="_blank"

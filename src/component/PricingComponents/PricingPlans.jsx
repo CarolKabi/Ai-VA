@@ -39,6 +39,9 @@ const PricingPlans = () => {
     {
       name: 'The Essentials',
       price: '$600/month',
+      pricePerHour: '$15/hour',
+      estimatedTimePerWeek: '10 hours/week',
+      pricePerWeek: '$150/week',
       icon: <FaSeedling className="text-3xl text-color" aria-hidden="true" />,
       description: 'For solo founders ready to stop doing everything alone.',
       features: [
@@ -50,12 +53,15 @@ const PricingPlans = () => {
         'Weekly check-ins with our agency lead',
         'Founder onboarding + guided start',
       ],
-      bestFor: 'Best for coaches, consultants, and speakers getting organized for scale',
+      bestFor: 'Best for those that need support in their business',
       isPopular: false,
     },
     {
       name: 'The Accelerator',
-      price: '$800/month',
+      price: '$960/month',
+      pricePerHour: '$12/hour',
+      estimatedTimePerWeek: '20 hours/week',
+      pricePerWeek: '$240/week',
       icon: <FaRocket className="text-3xl text-color" aria-hidden="true" />,
       description: 'For founders in motion who need proactive support.',
       features: [
@@ -67,12 +73,15 @@ const PricingPlans = () => {
         'Monthly strategy touchpoint with Caroline',
         'Quarterly workflow + tools audit',
       ],
-      bestFor: 'Best for founders who are growing fast and want to stay ahead of the curve',
+      bestFor: 'Best for those growing and need support, streamlining, or process automation',
       isPopular: true,
     },
     {
       name: 'The Executive',
-      price: '$1,000/month',
+      price: '$1,440/month',
+      pricePerHour: '$9/hour',
+      estimatedTimePerWeek: '40 hours/week',
+      pricePerWeek: '$360/week',
       icon: <FaCrown className="text-3xl text-color" aria-hidden="true" />,
       description: 'For leaders who want a second brain—not just a second set of hands.',
       features: [
@@ -85,7 +94,7 @@ const PricingPlans = () => {
         'Content creation + campaign delivery',
         'Customized SOPs built as you go',
       ],
-      bestFor: 'Best for CEOs with multiple offers, active teams, or fast-scaling needs',
+      bestFor: 'Best for those with proven offers and need support scaling',
       isPopular: false,
     },
   ];
@@ -144,7 +153,15 @@ const PricingPlans = () => {
               )}
               <div className="mb-4">{plan.icon}</div>
               <h3 className="text-lg sm:text-xl font-semibold text-color mb-2">{plan.name}</h3>
-              <p className="text-xl sm:text-2xl font-bold text-gray-600 mb-4">{plan.price}</p>
+              <p className="text-xl sm:text-2xl font-bold text-gray-600 mb-2">{plan.price}</p>
+              <div className="bg-gray-50 p-3 rounded-lg mb-6 shadow-inner border border-gray-100">
+                <p className="text-xs text-gray-700 font-medium mb-1">
+                  <span className="text-color">Hourly:</span> {plan.pricePerHour}
+                </p>
+                <p className="text-xs text-gray-700 font-medium">
+                  <span className="text-color">Weekly:</span> {plan.pricePerWeek} ({plan.estimatedTimePerWeek})
+                </p>
+              </div>
               <p className="text-xs text-gray-600 mb-6 leading-relaxed">{plan.description}</p>
               <ul className="text-xs text-gray-600 mb-6 flex-grow">
                 {plan.features.map((feature, idx) => (
