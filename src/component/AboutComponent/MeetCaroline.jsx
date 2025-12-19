@@ -44,7 +44,7 @@ const MeetCaroline = () => {
             </ul>
           </div>
           <a
-            href="https://zcal.co/carolinekabi/discovery-call-30min"
+            href="/contact"
             target="_blank"
             rel="noopener noreferrer"
             className="relative bg-color text-white font-semibold mt-4 py-2 px-6 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 bg-opacity-95 hover:bg-opacity-100 overflow-hidden"

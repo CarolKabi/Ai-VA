@@ -126,9 +126,7 @@ const WhyChooseUs = () => {
             Ready to Get Started?
           </h4>
           <a
-            href="https://zcal.co/carolinekabi/discovery-call-30min"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/contact"
             className="inline-flex items-center px-5 py-2 text-xs sm:text-sm font-semibold rounded-full bg-color text-white shadow-lg hover:bg-[#a62066] transition-colors duration-300"
             aria-label="Book a discovery call to find your perfect virtual assistant with AI Empowered Virtual Assistants"
           >

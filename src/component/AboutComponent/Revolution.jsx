@@ -103,7 +103,7 @@ const Revolution = () => {
           variants={containerVariants}
         >
           <motion.a
-            href="https://zcal.co/carolinekabi/discovery-call-30min"
+            href="/contact"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center px-5 py-2 text-xs sm:text-sm font-semibold rounded-full bg-color text-white shadow-lg"

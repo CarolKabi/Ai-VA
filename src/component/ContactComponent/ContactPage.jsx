@@ -57,18 +57,19 @@ const ContactUs = () => {
     const supportTypes = Array.from(e.target.querySelectorAll('input[name="supportTypes"]:checked')).map(
       (input) => input.value
     );
-    formData.append('supportTypes', supportTypes.join(', ') || 'N/A');
+    formData.append('supportTypes', supportTypes.join(', '));
 
     // Handle conditional fields
     if (e.target.location.value === 'Other') {
       formData.append('location', e.target.locationOther.value || 'N/A');
     }
-    formData.append('businessName', e.target.businessName.value || 'N/A');
-    formData.append('website', e.target.website.value || 'N/A');
+    formData.append('businessName', e.target.businessName.value);
+    formData.append('website', e.target.website.value);
     formData.append('otherSupport', e.target.otherSupport?.value || 'N/A');
-    formData.append('priority', e.target.priority.value || 'N/A');
-    formData.append('startTime', e.target.startTime.value || 'N/A');
-    formData.append('success', e.target.success.value || 'N/A');
+    formData.append('priority', e.target.priority.value);
+    formData.append('startTime', e.target.startTime.value);
+    formData.append('success', e.target.success.value);
+    formData.append('budget', e.target.budget.value);
     formData.append('additionalInfo', e.target.additionalInfo.value || 'N/A');
 
     try {
@@ -86,6 +87,7 @@ const ContactUs = () => {
           message: 'Form submitted successfully! We’ll get back to you soon.',
         });
         e.target.reset();
+        window.location.href = 'https://zcal.co/carolinekabi/discovery-call-30min';
       } else {
         setLoading(false);
         console.error('Error:', result);
@@ -207,24 +209,26 @@ const ContactUs = () => {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label htmlFor="businessName" className="block text-sm font-medium text-gray-700 mb-1">
-                    Business Name (Optional)
+                    Business Name <span className="text-red-500">*</span>
                   </label>
                   <input
                     type="text"
                     id="businessName"
                     name="businessName"
+                    required
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C8287E] text-gray-700 bg-gray-50"
                     aria-label="Your business name"
                   />
                 </div>
                 <div>
                   <label htmlFor="website" className="block text-sm font-medium text-gray-700 mb-1">
-                    Website or Social Media Handle (Optional)
+                    Website or Social Media Handle <span className="text-red-500">*</span>
                   </label>
                   <input
                     type="text"
                     id="website"
                     name="website"
+                    required
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C8287E] text-gray-700 bg-gray-50"
                     aria-label="Your website or social media handle"
                     placeholder="Helps us understand your business"
@@ -232,12 +236,13 @@ const ContactUs = () => {
                 </div>
               </div>
               <div>
-                <label htmlFor="location" className="block text-sm font-medium text-gray-700 mb-1">
-                  Where are you located?
-                </label>
+                  <label htmlFor="location" className="block text-sm font-medium text-gray-700 mb-1">
+                    Where are you located? <span className="text-red-500">*</span>
+                  </label>
                 <select
                   id="location"
                   name="location"
+                  required
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C8287E] text-gray-700 bg-gray-50"
                   aria-label="Your location"
                 >
@@ -255,9 +260,9 @@ const ContactUs = () => {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  What kind of support are you looking for? (Select all that apply)
-                </label>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    What kind of support are you looking for? (Select all that apply) <span className="text-red-500">*</span>
+                  </label>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {supportOptions.map((option, idx) => (
                     <label key={idx} className="flex items-center text-sm text-gray-700">
@@ -294,25 +299,27 @@ const ContactUs = () => {
                 </div>
               </div>
               <div>
-                <label htmlFor="priority" className="block text-sm font-medium text-gray-700 mb-1">
-                  What’s your biggest priority right now?
-                </label>
+                  <label htmlFor="priority" className="block text-sm font-medium text-gray-700 mb-1">
+                    What’s your biggest priority right now? <span className="text-red-500">*</span>
+                  </label>
                 <input
                   type="text"
                   id="priority"
                   name="priority"
+                  required
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C8287E] text-gray-700 bg-gray-50"
                   aria-label="Your biggest priority"
                   placeholder="E.g., 'Freeing up my time,' 'Launching my course,' 'Getting organized'"
                 />
               </div>
               <div>
-                <label htmlFor="startTime" className="block text-sm font-medium text-gray-700 mb-1">
-                  When would you like to get started?
-                </label>
+                  <label htmlFor="startTime" className="block text-sm font-medium text-gray-700 mb-1">
+                    When would you like to get started? <span className="text-red-500">*</span>
+                  </label>
                 <select
                   id="startTime"
                   name="startTime"
+                  required
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C8287E] text-gray-700 bg-gray-50"
                   aria-label="When you want to start"
                 >
@@ -324,17 +331,36 @@ const ContactUs = () => {
                 </select>
               </div>
               <div>
-                <label htmlFor="success" className="block text-sm font-medium text-gray-700 mb-1">
-                  How would you define success working with a VA?
-                </label>
+                  <label htmlFor="success" className="block text-sm font-medium text-gray-700 mb-1">
+                    How would you define success working with a VA? <span className="text-red-500">*</span>
+                  </label>
                 <textarea
                   id="success"
                   name="success"
                   rows="4"
+                  required
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C8287E] text-gray-700 bg-gray-50"
                   aria-label="Define success with a virtual assistant"
                   placeholder="E.g., 'I’d love to feel like I can finally breathe,' or 'My goal is to grow while working fewer hours.'"
                 />
+              </div>
+              <div>
+                <label htmlFor="budget" className="block text-sm font-medium text-gray-700 mb-1">
+                  What is your budget for this role? <span className="text-red-500">*</span>
+                </label>
+                <select
+                  id="budget"
+                  name="budget"
+                  required
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C8287E] text-gray-700 bg-gray-50"
+                  aria-label="Your budget for this role"
+                >
+                  <option value="">Select an option</option>
+                  <option value="Under $500/month">Under $500/month</option>
+                  <option value="$500 - $1,000/month">$500 - $1,000/month</option>
+                  <option value="$1,000 - $2,000/month">$1,000 - $2,000/month</option>
+                  <option value="Over $2,000/month">Over $2,000/month</option>
+                </select>
               </div>
               <div>
                 <label htmlFor="additionalInfo" className="block text-sm font-medium text-gray-700 mb-1">
@@ -454,7 +480,7 @@ const ContactUs = () => {
             <p className="text-sm sm:text-base text-gray-600 mb-6 leading-relaxed">
               Complete the form above and we’ll be in touch within 1 business day.
             </p>
-            <Link
+            {/* <Link
               to="https://zcal.co/carolinekabi/discovery-call-30min"
               target="_blank"
               rel="noopener noreferrer"
@@ -466,7 +492,7 @@ const ContactUs = () => {
             >
               <FaCalendarAlt className="mr-2 text-base" aria-hidden="true" />
               Apply + Book Your Call
-            </Link>
+            </Link> */}
           </motion.div>
         </div>
       </motion.div>

@@ -50,7 +50,7 @@ const FreeResource = () => {
   const resources = [
     {
       id: 1,
-      title: 'The Founder’s Guide to Delegation in the AI Era',
+      title: 'Why Use AI Trained VAs',
       previewImage: assets.heroabout,
       pdfUrl: assets.pdf1,
     },
@@ -176,7 +176,7 @@ const FreeResource = () => {
 
         {/* Resource Cards */}
         <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 items-center gap-5"
           variants={containerVariants}
         >
           {resources.map((resource) => (
@@ -192,7 +192,7 @@ const FreeResource = () => {
               <img
                 src={resource.previewImage}
                 alt={`Preview of ${resource.title} PDF`}
-                className="w-full h-48 object-cover rounded-lg mb-4"
+                className="w-full h-54 object-cover rounded-lg mb-4"
               />
               <h3 className="text-base sm:text-lg font-bold text-color mb-2 text-center">
                 {resource.title}

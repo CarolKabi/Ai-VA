@@ -153,7 +153,7 @@ const Testimonial = () => {
               exit={{ opacity: 0, scale: 0.8, transition: { duration: 0.3 } }}
             >
               <p
-                className="text-sm sm:text-base leading-relaxed italic"
+                className="text-sm sm:text-base leading-relaxed text-gray-600 italic"
                 style={{ color: '#333/dark gray' }} // Dark gray
               >
                 "{testimonials[currentIndex].quote}"

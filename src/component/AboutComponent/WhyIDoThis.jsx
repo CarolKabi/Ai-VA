@@ -38,7 +38,7 @@ const WhyIDoThis = () => {
             <span className="font-semibold text-color">One founder. One VA. One transformation at a time.</span>
           </p>
           <a
-            href="https://zcal.co/carolinekabi/discovery-call-30min"
+            href="/contact"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center px-4 py-1.5 text-xs sm:text-sm font-semibold rounded-full bg-color text-white shadow-md hover:bg-[#a62066] transition-colors duration-300"

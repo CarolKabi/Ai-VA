@@ -85,9 +85,7 @@ const CastlePlan = () => {
             Best for those need AI support, cross functional team support, and to do more with less.
           </p>
           <Link
-            to="https://zcal.co/carolinekabi/discovery-call-30min"
-            target="_blank"
-            rel="noopener noreferrer"
+            to="/contact"
             className="inline-flex items-center px-5 py-2 text-xs sm:text-sm font-semibold rounded-full bg-color text-white shadow-md hover:bg-[#a62066] transition-colors duration-300"
             aria-label="Book a strategy call to explore The Castle custom pricing plan with AI Empowered Virtual Assistants"
           >
@@ -123,7 +121,7 @@ const CastlePlan = () => {
               Contact Us Directly
             </Link>
             <Link
-              to="https://zcal.co/carolinekabi/discovery-call-30min"
+              to="/contact"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center px-5 py-2 text-xs sm:text-sm font-semibold rounded-full bg-color text-white shadow-md hover:bg-[#a62066] transition-colors duration-300"
