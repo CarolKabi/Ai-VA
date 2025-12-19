@@ -159,7 +159,7 @@ const Navbar = () => {
           </ul>
           {/* Book a Call Button (Desktop) */}
           <Link
-            to="https://zcal.co/carolinekabi/discovery-call-30min"
+            to="/contact"
             target="_blank"
             className="inline-flex items-center px-4 py-2 text-sm font-semibold rounded-full"
             style={{ backgroundColor: '#C8287E', color: '#FFFFFF' }}
@@ -231,7 +231,7 @@ const Navbar = () => {
         </ul>
         <div className="flex justify-center items-center w-full px-4 py-4">
           <Link
-            to="https://zcal.co/carolinekabi/discovery-call-30min"
+            to="/contact"
             target="_blank"
             className="inline-flex items-center px-4 py-2 w-3/4 text-base font-semibold rounded-full"
             style={{ backgroundColor: '#C8287E', color: '#FFFFFF' }}
