@@ -81,7 +81,7 @@ const App = () => {
         },
       },
     },
-    '/pricing': {
+    '/pricing2': {
       title: 'Pricing - AI Empowered Virtual Assistants',
       description:
         'Discover flexible pricing plans for AI Empowered Virtual Assistants’ AI-enhanced services tailored to your business needs.',
